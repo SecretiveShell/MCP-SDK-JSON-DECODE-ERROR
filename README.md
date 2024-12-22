@@ -1,6 +1,6 @@
 # JSON Error Demo
 
-This is a simple error of the JSON decode error in the MCP python client SDK.
+This is a simple demonstration of the JSON decode error in the MCP python client SDK.
 
 To run the demo clone this repository, install the dependencies and run the test.py file.
 
