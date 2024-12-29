@@ -8,8 +8,12 @@ server_params = StdioServerParameters(
     args=["--directory",
           ".",
           "run",
-          "json-error-demo"], 
+          "json-error-demo"],
+    encoding_error_handler="replace"
 )
+
+assert server_params.encoding == "utf-8"
+assert server_params.encoding_error_handler == "replace"
 
 async def run():
     async with stdio_client(server_params) as (read, write):
