@@ -32,6 +32,7 @@ async def handle_list_tools() -> list[types.Tool]:
         )
     ]
 
+
 @server.call_tool()
 async def handle_call_tool(
     name: str, arguments: dict | None
@@ -44,9 +45,12 @@ async def handle_call_tool(
     return [
         types.TextContent(
             type="text",
-            text=b"This is a test with a problematic character: \x92".decode("windows-1252"),
+            text=b"This is a test with a problematic character: \x92".decode(
+                "windows-1252"
+            ),
         )
     ]
+
 
 async def main():
     # Run the server using stdin/stdout streams

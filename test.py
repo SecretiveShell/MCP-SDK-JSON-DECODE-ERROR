@@ -5,15 +5,13 @@ import pprint
 # Create server parameters for stdio connection
 server_params = StdioServerParameters(
     command="uv",
-    args=["--directory",
-          ".",
-          "run",
-          "json-error-demo"],
-    encoding_error_handler="replace"
+    args=["--directory", ".", "run", "json-error-demo"],
+    encoding_error_handler="replace",
 )
 
 assert server_params.encoding == "utf-8"
 assert server_params.encoding_error_handler == "replace"
+
 
 async def run():
     async with stdio_client(server_params) as (read, write):
@@ -22,7 +20,7 @@ async def run():
             await session.initialize()
 
             # The example server only supports prompt primitives:
-        
+
             # List available prompts
             tools = await session.list_tools()
             print(f"Tools: {pprint.pformat(tools.model_dump())}\n")
@@ -32,6 +30,8 @@ async def run():
             result = await session.call_tool("search", {"query": "test"})
             print(f"Result: {result}")
 
+
 if __name__ == "__main__":
     import asyncio
+
     asyncio.run(run())
